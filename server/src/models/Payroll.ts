@@ -1,32 +1,32 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-import { Employee } from "./Employee"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { Employee } from './Employee'
 
-@Entity("payrolls")
+@Entity('payrolls')
 export class Payroll {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @ManyToOne(() => Employee, (employee) => employee.payrolls)
-  employee: Employee
+  employee!: Employee
 
   @Column()
-  month: number
+  month!: number
 
   @Column()
-  year: number
+  year!: number
 
-  @Column("decimal", { precision: 10, scale: 2 })
-  base_salary: number
+  @Column('decimal', { precision: 10, scale: 2 })
+  baseSalary!: number
 
-  @Column("decimal", { precision: 10, scale: 2, default: 0 })
-  bonus: number
+  @Column('decimal', { precision: 10, scale: 2, default: 0 })
+  bonus!: number
 
-  @Column("decimal", { precision: 10, scale: 2, default: 0 })
-  overtime: number
+  @Column('decimal', { precision: 10, scale: 2, default: 0 })
+  overtime!: number
 
-  @Column("decimal", { precision: 10, scale: 2, default: 0 })
-  deduction: number
+  @Column('decimal', { precision: 10, scale: 2, default: 0 })
+  deduction!: number
 
-  @Column("decimal", { precision: 10, scale: 2 })
-  net_salary: number
+  @Column('decimal', { precision: 10, scale: 2 })
+  netSalary!: number
 }

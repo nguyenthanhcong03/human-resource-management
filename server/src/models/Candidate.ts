@@ -1,26 +1,26 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-import { Recruitment } from "./Recruitment"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { Recruitment } from './Recruitment'
 
-@Entity("candidates")
+@Entity('candidates')
 export class Candidate {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @Column()
-  full_name: string
+  fullName!: string
 
   @Column()
-  email: string
+  email!: string
 
   @Column()
-  phone: string
+  phone!: string
 
   @Column({ nullable: true })
-  cv_url: string
+  cvUrl!: string
 
   @ManyToOne(() => Recruitment, (recruitment) => recruitment.candidates)
-  applied_job: Recruitment
+  appliedJob!: Recruitment
 
-  @Column({ default: "pending" })
-  status: string
+  @Column({ default: 'pending' })
+  status!: string
 }

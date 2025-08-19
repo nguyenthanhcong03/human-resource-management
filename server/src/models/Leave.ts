@@ -1,26 +1,26 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-import { Employee } from "./Employee"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { Employee } from './Employee'
 
-@Entity("leaves")
+@Entity('leaves')
 export class Leave {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @ManyToOne(() => Employee, (employee) => employee.leaves)
-  employee: Employee
+  employee!: Employee
 
   @Column()
-  leave_type: string
+  leaveType!: string
 
-  @Column({ type: "date" })
-  start_date: Date
+  @Column({ type: 'date' })
+  startDate!: Date
 
-  @Column({ type: "date" })
-  end_date: Date
+  @Column({ type: 'date' })
+  endDate!: Date
 
   @Column({ nullable: true })
-  reason: string
+  reason!: string
 
-  @Column({ default: "pending" })
-  status: string
+  @Column({ default: 'pending' })
+  status!: string
 }

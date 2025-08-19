@@ -1,23 +1,23 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-import { Employee } from "./Employee"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { Employee } from './Employee'
 
-@Entity("evaluations")
+@Entity('evaluations')
 export class Evaluation {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @ManyToOne(() => Employee, (employee) => employee.evaluations)
-  employee: Employee
+  employee!: Employee
 
   @Column()
-  review_period: string
+  reviewPeriod!: string
 
-  @Column("decimal", { precision: 5, scale: 2 })
-  kpi_score: number
+  @Column('decimal', { precision: 5, scale: 2 })
+  kpiScore!: number
 
-  @Column("text", { nullable: true })
-  comments: string
+  @Column('text', { nullable: true })
+  comments!: string
 
   @ManyToOne(() => Employee, { nullable: true })
-  reviewer: Employee
+  reviewer!: Employee
 }

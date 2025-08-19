@@ -1,62 +1,62 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
-import { Department } from "./Department"
-import { Position } from "./Position"
-import { Contract } from "./Contract"
-import { Payroll } from "./Payroll"
-import { Attendance } from "./Attendance"
-import { Leave } from "./Leave"
-import { Evaluation } from "./Evaluation"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm'
+import { Department } from './Department'
+import { Position } from './Position'
+import { Contract } from './Contract'
+import { Payroll } from './Payroll'
+import { Attendance } from './Attendance'
+import { Leave } from './Leave'
+import { Evaluation } from './Evaluation'
 
-@Entity("employees")
+@Entity('employees')
 export class Employee {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @Column({ unique: true })
-  employee_code: string
+  employeeCode!: string
 
   @Column()
-  full_name: string
+  fullName!: string
 
   @Column({ nullable: true })
-  gender: string
+  gender!: string
 
-  @Column({ type: "date", nullable: true })
-  dob: Date
-
-  @Column({ nullable: true })
-  phone: string
+  @Column({ type: 'date', nullable: true })
+  dob!: Date
 
   @Column({ nullable: true })
-  email: string
+  phone!: string
 
   @Column({ nullable: true })
-  address: string
+  email!: string
 
-  @Column({ type: "date" })
-  hire_date: Date
+  @Column({ nullable: true })
+  address!: string
 
-  @Column({ default: "active" })
-  status: string
+  @Column({ type: 'date' })
+  hireDate!: Date
+
+  @Column({ default: 'active' })
+  status!: string
 
   @ManyToOne(() => Department, (department) => department.employees)
-  department: Department
+  department!: Department
 
   @ManyToOne(() => Position, (position) => position.employees)
-  position: Position
+  position!: Position
 
   @OneToMany(() => Contract, (contract) => contract.employee)
-  contracts: Contract[]
+  contracts!: Contract[]
 
   @OneToMany(() => Payroll, (payroll) => payroll.employee)
-  payrolls: Payroll[]
+  payrolls!: Payroll[]
 
   @OneToMany(() => Attendance, (attendance) => attendance.employee)
-  attendances: Attendance[]
+  attendances!: Attendance[]
 
   @OneToMany(() => Leave, (leave) => leave.employee)
-  leaves: Leave[]
+  leaves!: Leave[]
 
   @OneToMany(() => Evaluation, (evaluation) => evaluation.employee)
-  evaluations: Evaluation[]
+  evaluations!: Evaluation[]
 }

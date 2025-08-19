@@ -1,24 +1,24 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from "typeorm"
-import { Candidate } from "./Candidate"
-import { Department } from "./Department"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm'
+import { Candidate } from './Candidate'
+import { Department } from './Department'
 
-@Entity("recruitments")
+@Entity('recruitments')
 export class Recruitment {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @Column()
-  job_title: string
+  jobTitle!: string
 
   @ManyToOne(() => Department, (department) => department.id)
-  department: Department
+  department!: Department
 
-  @Column("text")
-  description: string
+  @Column('text')
+  description!: string
 
-  @Column({ default: "open" })
-  status: string
+  @Column({ default: 'open' })
+  status!: string
 
-  @OneToMany(() => Candidate, (candidate) => candidate.applied_job)
-  candidates: Candidate[]
+  @OneToMany(() => Candidate, (candidate) => candidate.appliedJob)
+  candidates!: Candidate[]
 }

@@ -1,4 +1,3 @@
-// src/data-source.ts
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 import { Employee } from './models//Employee'
@@ -15,11 +14,11 @@ import { User } from './models//User'
 
 export const AppDataSource = new DataSource({
   type: 'mysql', // hoặc "postgres"
-  host: 'localhost',
-  port: 3306,
-  username: 'root',
-  password: 'password',
-  database: 'hrm_db',
+  host: process.env.DB_HOST || 'localhost',
+  port: Number(process.env.DB_PORT) || 3306,
+  username: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'hrm_db',
   synchronize: true, // chỉ dùng dev, prod thì nên migration
   logging: false,
   entities: [

@@ -1,23 +1,23 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-import { Employee } from "./Employee"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { Employee } from './Employee'
 
-@Entity("attendances")
+@Entity('attendances')
 export class Attendance {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @ManyToOne(() => Employee, (employee) => employee.attendances)
-  employee: Employee
+  employee!: Employee
 
-  @Column({ type: "date" })
-  date: Date
+  @Column({ type: 'date' })
+  date!: Date
 
-  @Column({ type: "time", nullable: true })
-  check_in: string
+  @Column({ type: 'time', nullable: true })
+  checkIn!: string
 
-  @Column({ type: "time", nullable: true })
-  check_out: string
+  @Column({ type: 'time', nullable: true })
+  checkOut!: string
 
-  @Column({ default: "present" })
-  status: string
+  @Column({ default: 'present' })
+  status!: string
 }

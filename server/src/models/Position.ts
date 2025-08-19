@@ -1,17 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import { Employee } from "./Employee"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import { Employee } from './Employee'
 
-@Entity("positions")
+@Entity('positions')
 export class Position {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @Column()
-  position_name: string
+  positionName!: string
 
-  @Column("decimal", { precision: 10, scale: 2 })
-  base_salary: number
+  @Column('decimal', { precision: 10, scale: 2 })
+  baseSalary!: number
 
   @OneToMany(() => Employee, (employee) => employee.position)
-  employees: Employee[]
+  employees!: Employee[]
 }

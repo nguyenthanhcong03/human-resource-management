@@ -1,26 +1,26 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-import { Employee } from "./Employee"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { Employee } from './Employee'
 
-@Entity("contracts")
+@Entity('contracts')
 export class Contract {
   @PrimaryGeneratedColumn()
-  id: number
+  id!: number
 
   @ManyToOne(() => Employee, (employee) => employee.contracts)
-  employee: Employee
+  employee!: Employee
 
   @Column()
-  contract_type: string
+  contractType!: string
 
-  @Column({ type: "date" })
-  start_date: Date
+  @Column({ type: 'date' })
+  startDate!: Date
 
-  @Column({ type: "date", nullable: true })
-  end_date: Date
+  @Column({ type: 'date', nullable: true })
+  endDate!: Date
 
-  @Column("decimal", { precision: 10, scale: 2 })
-  salary: number
+  @Column('decimal', { precision: 10, scale: 2 })
+  salary!: number
 
-  @Column("decimal", { precision: 10, scale: 2, nullable: true })
-  insurance: number
+  @Column('decimal', { precision: 10, scale: 2, nullable: true })
+  insurance!: number
 }
