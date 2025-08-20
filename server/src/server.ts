@@ -8,6 +8,7 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import routes from './routes'
 import { errorConverter, errorHandler, notFound } from '@/middlewares/errorMiddleware'
+import authController from './controllers/authController'
 
 // Load environment variables
 dotenv.config()
@@ -41,6 +42,9 @@ AppDataSource.initialize()
     app.get('/', (req: Request, res: Response) => {
       res.send('🚀 HRM API running...')
     })
+
+    // Sample route
+    app.post('/auth/register', authController.registerAccount)
 
     app.listen(PORT, () => {
       console.log(`✅ Server running at http://localhost:${process.env.PORT || 5000}`)

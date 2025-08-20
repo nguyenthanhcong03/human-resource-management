@@ -3,13 +3,15 @@ import themeReducer from './themeSlice'
 import authReducer from './authSlice'
 import appReducer from './appSlice'
 import snackbarReducer from './snackbarSlice'
+import employeeReducer from './employeeSlice'
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
     app: appReducer,
     snackbar: snackbarReducer,
-    auth: authReducer
+    auth: authReducer,
+    employee: employeeReducer
   }
 })
 

@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types';
-import { useMemo } from 'react';
+import PropTypes from 'prop-types'
+import { useMemo } from 'react'
 
 // material-ui
-import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 
 // project imports
-import Palette from './palette';
-import Typography from './typography';
-import CustomShadows from './shadows';
-import componentsOverride from './overrides';
+import Palette from './palette'
+import Typography from './typography'
+import CustomShadows from './shadows'
+import componentsOverride from './overrides'
 
 // ==============================|| DEFAULT THEME - MAIN ||============================== //
 
 export default function ThemeCustomization({ children }) {
-  const theme = Palette('light', 'default');
+  const theme = Palette('light', 'default')
 
-  const themeTypography = Typography(`'Public Sans', sans-serif`);
-  const themeCustomShadows = useMemo(() => CustomShadows(theme), [theme]);
+  const themeTypography = Typography(`'Public Sans', sans-serif`)
+  const themeCustomShadows = useMemo(() => CustomShadows(theme), [theme])
 
   const themeOptions = useMemo(
     () => ({
@@ -43,10 +43,10 @@ export default function ThemeCustomization({ children }) {
       typography: themeTypography
     }),
     [theme, themeTypography, themeCustomShadows]
-  );
+  )
 
-  const themes = createTheme(themeOptions);
-  themes.components = componentsOverride(themes);
+  const themes = createTheme(themeOptions)
+  themes.components = componentsOverride(themes)
 
   return (
     <StyledEngineProvider injectFirst>
@@ -55,7 +55,7 @@ export default function ThemeCustomization({ children }) {
         {children}
       </ThemeProvider>
     </StyledEngineProvider>
-  );
+  )
 }
 
-ThemeCustomization.propTypes = { children: PropTypes.node };
+ThemeCustomization.propTypes = { children: PropTypes.node }

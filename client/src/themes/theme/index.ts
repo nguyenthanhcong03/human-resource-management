@@ -1,7 +1,7 @@
 // ==============================|| PRESET THEME - DEFAULT ||============================== //
 
 export default function Default(colors) {
-  const { blue, red, gold, cyan, green, grey } = colors;
+  const { blue, red, gold, cyan, green, grey } = colors
   const greyColors = {
     0: grey[0],
     50: grey[1],
@@ -20,8 +20,8 @@ export default function Default(colors) {
     A400: grey[13],
     A700: grey[14],
     A800: grey[16]
-  };
-  const contrastText = '#fff';
+  }
+  const contrastText = '#fff'
 
   return {
     primary: {
@@ -86,5 +86,5 @@ export default function Default(colors) {
       contrastText
     },
     grey: greyColors
-  };
+  }
 }

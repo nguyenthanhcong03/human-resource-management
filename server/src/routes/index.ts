@@ -1,10 +1,12 @@
 import { Router } from 'express'
 import authRoutes from './authRoutes'
+import employeeRoutes from './employeeRoutes'
 
 const router = Router()
 
 // API Routes
 router.use('/auth', authRoutes)
+router.use('/employee', employeeRoutes)
 
 // Health check route
 router.get('/health', (req, res) => {

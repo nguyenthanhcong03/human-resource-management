@@ -18,6 +18,7 @@ const ProtectedRoute = ({
 }: IProps) => {
   const location = useLocation()
   const { user, isAuthenticated, isLoading } = useAppSelector((state) => state.auth)
+  console.log('ahahha')
 
   if (isLoading) {
     return (
@@ -32,6 +33,7 @@ const ProtectedRoute = ({
   // Chuyển hướng người dùng không được xác thực đến trang đăng nhập với đường dẫn trở về
   // Chỉ khi đã hoàn thành việc kiểm tra xác thực (isLoading = false) và user thực sự chưa đăng nhập
   if (requireAuth && !isAuthenticated && !isLoading) {
+    console.log(`Redirecting to ${redirectPath} because user is not authenticated`)
     return <Navigate to={redirectPath} state={{ from: location.pathname }} replace />
   }
   // Kiểm tra quyền truy cập dựa trên vai trò người dùng

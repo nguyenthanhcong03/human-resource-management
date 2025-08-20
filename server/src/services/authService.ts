@@ -8,8 +8,10 @@ import { AppDataSource } from '@/data-source'
 const userRepo = AppDataSource.getRepository(User)
 
 const register = async (userData: any) => {
-  const { username, password } = userData
-  console.log('userData:', userData)
+  // const { username, password } = userData
+  // console.log('userData:', userData)
+  const username = 'admin'
+  const password = '123456'
 
   // Kiểm tra xem người dùng đã tồn tại chưa
   const existingUser = await userRepo.findOne({ where: { username } })

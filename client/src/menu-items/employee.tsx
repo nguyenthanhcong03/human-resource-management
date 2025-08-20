@@ -8,20 +8,20 @@ const icons = {
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
 
-const dashboard = {
+const employee = {
   id: 'group-dashboard',
-  title: 'Navigation',
+  title: 'Nhân viên',
   type: 'group',
   children: [
     {
-      id: 'dashboard',
-      title: 'Dashboard',
+      id: 'employee',
+      title: 'Danh sách nhân viên',
       type: 'item',
-      url: '/dashboard',
+      url: '/employee',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }
   ]
 }
 
-export default dashboard
+export default employee

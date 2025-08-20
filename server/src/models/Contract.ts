@@ -9,8 +9,13 @@ export class Contract {
   @ManyToOne(() => Employee, (employee) => employee.contracts)
   employee!: Employee
 
-  @Column()
-  contractType!: string
+  // Loại hợp đồng
+  @Column({
+    type: 'enum',
+    enum: ['intern', 'probation', 'official', 'part-time', 'freelance'],
+    nullable: true
+  })
+  contractType!: 'intern' | 'probation' | 'official' | 'part-time' | 'freelance'
 
   @Column({ type: 'date' })
   startDate!: Date
@@ -22,5 +27,5 @@ export class Contract {
   salary!: number
 
   @Column('decimal', { precision: 10, scale: 2, nullable: true })
-  insurance!: number
+  insuranceNumber!: number
 }

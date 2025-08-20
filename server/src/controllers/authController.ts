@@ -3,6 +3,7 @@ import authService from '../services/authService'
 import catchAsync from '@/utils/catchAsync'
 
 const registerAccount = catchAsync(async (req: Request, res: Response) => {
+  console.log('++++vao dang ky')
   const user = await authService.register(req.body)
   res.status(201).json({
     success: true,

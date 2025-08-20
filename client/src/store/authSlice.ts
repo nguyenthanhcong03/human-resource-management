@@ -39,9 +39,9 @@ export const register = createAsyncThunk('auth/register', async (userData: Regis
   }
 })
 
-export const login = createAsyncThunk('auth/login', async (credentials: LoginInput, { rejectWithValue }) => {
+export const login = createAsyncThunk('auth/login', async (loginData: LoginInput, { rejectWithValue }) => {
   try {
-    const response = await authAPI.login(credentials)
+    const response = await authAPI.login(loginData)
     console.log('first response:', response)
 
     // Save to localStorage
@@ -49,9 +49,8 @@ export const login = createAsyncThunk('auth/login', async (credentials: LoginInp
     localStorage.setItem('user', JSON.stringify(response.data.user))
 
     return response
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Đăng nhập thất bại'
-    return rejectWithValue(errorMessage)
+  } catch (error: any) {
+    return rejectWithValue(error.response?.data || 'Đăng nhập thất bại')
   }
 })
 

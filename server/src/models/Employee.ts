@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm'
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn
+} from 'typeorm'
 import { Department } from './Department'
 import { Position } from './Position'
 import { Contract } from './Contract'
@@ -33,11 +41,52 @@ export class Employee {
   @Column({ nullable: true })
   address!: string
 
+  // CMND/CCCD
+  @Column({ length: 20, nullable: true })
+  nationalId!: string
+
+  @Column({ type: 'date', nullable: true })
+  idIssueDate!: Date
+
+  @Column({ length: 255, nullable: true })
+  idIssuePlace!: string
+
   @Column({ type: 'date' })
   hireDate!: Date
 
-  @Column({ default: 'active' })
-  status!: string
+  @Column({
+    type: 'enum',
+    enum: ['active', 'probation', 'resigned', 'suspended'],
+    default: 'active'
+  })
+  status!: 'active' | 'probation' | 'resigned' | 'suspended'
+
+  // Thông tin thanh toán
+  @Column({ length: 100, nullable: true })
+  bankName!: string
+
+  @Column({ length: 50, nullable: true })
+  bankAccount!: string
+
+  @Column({ length: 50, nullable: true })
+  taxCode!: string
+
+  // Liên hệ khẩn cấp
+  @Column({ length: 255, nullable: true })
+  emergencyContactName!: string
+
+  @Column({ length: 20, nullable: true })
+  emergencyContactPhone!: string
+
+  @Column({ length: 50, nullable: true })
+  emergencyContactRelation!: string
+
+  // Timestamps
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt!: Date
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt!: Date
 
   @ManyToOne(() => Department, (department) => department.employees)
   department!: Department

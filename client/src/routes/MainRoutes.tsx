@@ -3,6 +3,10 @@ import { lazy } from 'react'
 // project imports
 import Loadable from '@/components/Loadable'
 import DashboardLayout from '@/layout/Dashboard'
+import ProtectedRoute from './guards/ProtectedRoute'
+import EmployeePage from '@/pages/dashboard/employee/EmployeePage'
+import Login from '@/pages/auth/Login'
+import path from 'path'
 
 // render- Dashboard
 const DashboardDefault = Loadable(lazy(() => import('@/pages/dashboard/default')))
@@ -14,25 +18,33 @@ const Shadow = Loadable(lazy(() => import('@/pages/component-overview/shadows'))
 
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('@/pages/extra-pages/sample-page')))
+const CreateEmployee = Loadable(lazy(() => import('@/pages/dashboard/employee/components/CreateEmployee')))
 
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
   path: '/',
-  element: <DashboardLayout />,
+  element: (
+    <ProtectedRoute requireAuth roles={['admin', 'manager', 'employee']}>
+      <DashboardLayout />
+    </ProtectedRoute>
+  ),
   children: [
     {
-      path: '/',
+      index: true,
       element: <DashboardDefault />
     },
     {
       path: 'dashboard',
-      children: [
-        {
-          path: 'default',
-          element: <DashboardDefault />
-        }
-      ]
+      element: <DashboardDefault />
+    },
+    {
+      path: 'employee',
+      element: <EmployeePage />
+    },
+    {
+      path: 'employee/create',
+      element: <CreateEmployee />
     },
     {
       path: 'typography',
